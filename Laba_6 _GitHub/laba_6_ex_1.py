@@ -1,5 +1,5 @@
 # Семенов Денис КНІТ 16-А
-def next_day(m):
+def next_month(m):
     """Функция меняет месяц на следующий,\
      если введен 31 день месяца"""
     if m < 12:
@@ -43,7 +43,7 @@ while True:
     day += 1
     if day > 31:
         day = 1
-        month = next_day(month)
+        month = next_month(month)
         year += 1
     print('Дата следующего дня: {}.{}.{}'.format(day, month, year))
     ask = input('Хотите продолжить? [y/n]: ')
