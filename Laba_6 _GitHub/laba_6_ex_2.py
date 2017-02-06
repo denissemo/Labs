@@ -9,7 +9,7 @@ while True:
     try:
         inp_len = float(input('Введите длину: '))
         inp_value = Measure[input('Введите величину на англ. языке: ')]
-    except ValueError or KeyError:
+    except (ValueError, KeyError):
         print('Такого значения нету, может вы ошиблись, попробуйте снова')
         continue
     if inp_value == Measure.decimetre:
