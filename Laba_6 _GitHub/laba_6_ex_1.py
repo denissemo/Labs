@@ -3,7 +3,7 @@
 def next_month(m):
     """Функция меняет месяц на следующий,\
      если введен 31 день месяца"""
-    if m < 12:
+    if m in range(12):
         m += 1
     else:
         m = 1
@@ -33,16 +33,16 @@ while True:
         break
     while True:
         try:
-            year = int(input('Введите год [1901, 2015]: '))
+            year = int(input('Введите год [1901, 2017]: '))
         except ValueError:
             print('Введите целое число!')
             continue
-        if year not in range(1901, 2016):
+        if year not in range(1901, 2018):
             print('Введите допустимое значение!')
             continue
         break
     day += 1
-    if day > 31:
+    if day not in range(32):
         day = 1
         month = next_month(month)
         year += 1
