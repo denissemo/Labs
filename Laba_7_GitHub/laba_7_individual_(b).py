@@ -9,8 +9,7 @@ let_case = {'б', 'в', 'г', 'д', 'ж', 'з', 'й', 'л', 'м', 'н', 'р'}
 letters = []
 while True:
     print('Enter the words, put comma between them and at the end point:')
-    w_inp = input()
-    w_inp = w_inp.lower()
+    w_inp = input().lower()
     if w_inp.isdigit():
         print('Please input string!')
         continue
@@ -19,7 +18,6 @@ while True:
             if w_inp.endswith('.'):
                 if ',' in w_inp or (',' not in w_inp and w_inp.endswith('.')
                                     and ' ' not in w_inp):
-                    w_inp = w_inp.replace('.', '')
                     w_inp = w_inp.split(', ')
                     for i in w_inp:
                         for j in i:
@@ -30,8 +28,7 @@ while True:
                             pass
                         else:
                             letters.remove(c)
-                            print('None available words')
-                            break
+                            print('None available letters')
                 else:
                     print('You have to put commas between words!')
                     continue
