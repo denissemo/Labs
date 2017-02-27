@@ -27,9 +27,7 @@ while True:
             break
     s_n = {i + 1 for i in range(n - 1)}
     print('Relatively prime numbers:')
-    for i in s_n:
-        if gcd(i, n) == 1:
-            print(i, end = ' ')
+    print(set(j for j in s_n if gcd(j, n) == 1))
     print('\n')
     ask = input('Do you want continue? [y/n]: ')
     if ask == 'y':
