@@ -25,7 +25,7 @@ while True:
         for i in range(n):
             for j in range(m):
                 try:
-                    array[i][j] = float(input('Input element of matrix %d%d: ' %
+                    array[i][j] = float(input('Input element of array %d%d: ' %
                                               (i + 1, j + 1)))
                 except ValueError:
                     print('Please enter the number, you enter words!\n')
