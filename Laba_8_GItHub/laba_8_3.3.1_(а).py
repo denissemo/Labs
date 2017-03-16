@@ -4,7 +4,7 @@
 from timeit import timeit
 setup = '''
 import numpy as np
-from random import choice, randint
+from random import choice
 from string import ascii_letters
 
 def linear_search(a, x):
