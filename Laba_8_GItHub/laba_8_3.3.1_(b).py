@@ -35,7 +35,7 @@ if returned is None:
     print('\\nElement not found...')
 else:
     print('\\nElement |{}| was found at {} position'.format(c_elem, returned))
-print('\\nThe amount of memory, consumed by the linear search algorithm {} bytes'
+print('\\nThe amount of memory, consumed by the binary search algorithm {} bytes'
       .format(returned.__sizeof__()))
 '''
 time = timeit(setup, number = 1)
