@@ -44,8 +44,7 @@ def db_manual_rnd_input(x):
                 # ручной ввод данных
                 for i in range(t_num):
                     while True:
-                        surname = input(
-                            '\nВведите фамилию туриста → ').capitalize()
+                        surname = input('\nВведите фамилию туриста → ').capitalize()
                         if surname.isalpha():
                             inform[i].append(surname)
                             break
@@ -54,11 +53,9 @@ def db_manual_rnd_input(x):
                             continue
                     while True:
                         try:
-                            age = int(
-                                input('\nВведите возраст туриста [10,55] → '))
+                            age = int(input('\nВведите возраст туриста [10,55] → '))
                             if age not in range(10, 56):
-                                print(
-                                    'Пожалуйста, введите корректный возраст ☻\n')
+                                print('Пожалуйста, введите корректный возраст ☻\n')
                                 continue
                             inform[i].append(str(age))
                             break
@@ -82,12 +79,10 @@ def db_manual_rnd_input(x):
                         print(eyes(j).value, end = ';  ')
                     while True:
                         try:
-                            eye = int(
-                                input('\n\nВыберите цвет глаз туриста, каждый'
-                                      ' цвет обозначеный номером → '))
+                            eye = int(input('\n\nВыберите цвет глаз туриста, ка'
+                                            'ждый цвет обозначеный номером → '))
                             if eye not in range(1, 8):
-                                print(
-                                    'Пожалуйста, введите корректные данные ☻\n')
+                                print('Пожалуйста, введите корректные данные ☻\n')
                                 continue
                             inform[i].append(str(eyes(eye).name))
                             break
@@ -112,31 +107,30 @@ def db_manual_rnd_input(x):
         return inform
 
 def db_see():
-    try:
-        print('\n{:^80}'.format('База данных туристов'))
-        print('╔' + '═' * 89 + '╗')
-        print('║{:^20}║{:^16}║{:^20}║{:^19}║'.format('Имя', 'Возраст', 'Пол',
-                                                     'Цвет глаз'))
-        print('╚' + '═' * 89 + '╝')
-        for i in returned:
+    print('\n{:^80}'.format('База данных туристов'))
+    print('╔' + '═' * 89 + '╗')
+    print('║{:^20}║{:^16}║{:^20}║{:^19}║'.format('Имя', 'Возраст', 'Пол', 'Цвет глаз'))
+    print('╚' + '═' * 89 + '╝')
+    if output:
+        for i in output:
             print('+' + '-' * 78 + '+')
             print('|{:^20}|{:^16}|{:^20}|{:^19}|'.format(i[0], i[1], i[2], i[3]))
         print('+' + '-' * 78 + '+')
-    except NameError:
+    else:
         print('\nВ БД пока нет информации :(\nВы можете внести её прямо сейчас...\n')
 
 def arith_mean(lst):
     return float(sum(lst)) / len(lst)
 
 def db_stat():
-    try:
-        print('\n{:^80}\n{:^80}\n{} {:^27}{:^27}'.format('Здесь вы можете увидеть '
-        'количество туристов по заданых параметрах', 'А именно:', '(1) по задан'
-        'ому возрасту', '(2) по заданому цвету глаз', '(3) вывести среднестатистические данные'))
+    print('\n{:^80}\n{:^80}\n{} {:^27}{:^27}'.format('Здесь вы можете увидеть '
+    'количество туристов по заданых параметрах', 'А именно:', '(1) по задан'
+    'ому возрасту', '(2) по заданому цвету глаз', '(3) вывести среднестатистические данные'))
+    if output:
         while True:
             try:
-                ask = int(input('Выберите цифру → '))
-                if ask not in range(1, 4):
+                s_ask = int(input('Выберите цифру → '))
+                if s_ask not in range(1, 4):
                     print('Пожалуйста, введите корректные данные ☻\n')
                     continue
                 break
@@ -145,7 +139,7 @@ def db_stat():
                 continue
         l_m = []
         l_w = []
-        if ask == 1:
+        if s_ask == 1:
             while True:
                 try:
                     age = int(input('\nВведите возраст туриста [10,55] → '))
@@ -153,7 +147,7 @@ def db_stat():
                         print('Пожалуйста, введите корректный возраст ☻\n')
                         continue
                     age = str(age)
-                    for i in returned:
+                    for i in output:
                         if i[1] == age:
                             if i[2] == 'мужской':
                                 l_m.append(i[1])
@@ -165,7 +159,7 @@ def db_stat():
                 except ValueError:
                     print('Пожалуйста, введите целое число ☻\n')
                     continue
-        elif ask == 2:
+        elif s_ask == 2:
             while True:
                 try:
                     print()
@@ -178,7 +172,7 @@ def db_stat():
                         print('Пожалуйста, введите корректные данные ☻\n')
                         continue
                     eye = eyes(eye).name
-                    for i in returned:
+                    for i in output:
                         if i[3] == eye:
                             if i[2] == 'мужской':
                                 l_m.append(i[1])
@@ -190,9 +184,9 @@ def db_stat():
                 except ValueError:
                     print('Пожалуйста, введите целое число ☻\n')
                     continue
-        elif ask == 3:
+        elif s_ask == 3:
             stat_age = []
-            for i in returned:
+            for i in output:
                 i[1] = int(i[1])
                 stat_age.append(i[1])
                 if i[2] == 'мужской':
@@ -200,11 +194,10 @@ def db_stat():
                 else:
                     l_w.append('1')
             print('\nСреднестатистический возраст туристов: ', arith_mean(stat_age))
-            print('\nМужчин {}%'.format(len(l_m) * len(returned) / 100))
-            print('Женщин {}%'.format(len(l_w) * len(returned) / 100))
-    except NameError:
+            print('\nМужчин {}%'.format(len(l_m) * len(output) / 100))
+            print('Женщин {}%'.format(len(l_w) * len(output) / 100))
+    else:
         print('\nВ БД пока нет информации :(\nВы можете внести её прямо сейчас...\n')
-
 
 def main_menu():
     print()
@@ -218,12 +211,14 @@ def main_menu():
           'экран', 'мужчин и женщин', '(1)', '(2)', '(3)'))
     print('*' * 80)
 
+output = []
 while True:
     main_menu()
     try:
         db_query = int(input('Пожалуйста, сделайте Ваш выбор → '))
         if db_query == 1:
             returned = db_manual_rnd_input(db_input())
+            output = output + returned
         elif db_query == 2:
             db_see()
         elif db_query == 3:
