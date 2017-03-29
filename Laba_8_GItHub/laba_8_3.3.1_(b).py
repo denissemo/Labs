@@ -6,6 +6,22 @@ setup = '''
 import numpy as np
 from random import randint
 
+while True:
+    try:
+        l_arr = int(input('Please enter length of array: '))
+        if l_arr < 1:
+            print('Please enter correctly number\\n')
+            continue
+        break
+    except ValueError:
+        print('Please enter int number\\n')
+        continue
+array = np.zeros(l_arr, dtype = int)
+for i in range(len(array)):
+    array[i] = randint(0, 200)
+'''
+
+stmt = '''   
 def binary_search(a, x):
     s = 0
     e = len(a) - 1
@@ -21,10 +37,6 @@ def binary_search(a, x):
             s = mid + 1
     return answer
 
-array = np.zeros(108, dtype = int)
-for i in range(len(array)):
-    array[i] = randint(0, 200)
-
 print('Source array:\\n', array)
 s_array = np.sort(array)
 print('\\nSorted array:\\n', s_array)
@@ -36,7 +48,13 @@ if returned is None:
 else:
     print('\\nElement |{}| was found at {} position'.format(c_elem, returned))
 print('\\nThe amount of memory, consumed by the binary search algorithm {} bytes'
-      .format(returned.__sizeof__()))
+      .format(s_array.__sizeof__()))
 '''
-time = timeit(setup, number = 1)
-print('\nTime of algorithm execution {:1.3f} second'.format(time))
+while True:
+    time = timeit(stmt, setup, number = 1)
+    print('\nTime of algorithm execution {:f} second'.format(time))
+    ask = input('\nDo you want continue?: ').lower()
+    if ask == 'y':
+        continue
+    else:
+        break

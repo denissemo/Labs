@@ -6,6 +6,27 @@ setup = '''
 from string import ascii_letters
 from random import choice, randint
 
+letters = ascii_letters
+while True:
+    try:
+        l_arr = int(input('Please enter length of string: '))
+        if l_arr < 9:
+            print('Please enter correctly number\\n')
+            continue
+        break
+    except ValueError:
+        print('Please enter int number\\n')
+        continue
+text = ''.join(choice(letters) for i in range(l_arr))
+print('Source string:\\n', text)
+pattern = ''
+rand = randint(0, l_arr + 1)
+for c in range(4):
+    pattern += text[rand]
+    rand += 1
+'''
+
+stmt = '''
 def string_search(s, p):
     i = j = 0
     while j < len(p) and i <= len(s) - len(p):
@@ -15,15 +36,7 @@ def string_search(s, p):
             i += 1
             j = 0
     return i if j == len(p) else None
-
-letters = ascii_letters
-text = ''.join(choice(letters) for i in range(108))
-print('Source string:\\n', text)
-pattern = ''
-rand = randint(0, 104)
-for c in range(4):
-    pattern += text[rand]
-    rand += 1
+    
 print('\\nRandomly selected substring == {} =='.format(pattern))
 returned = string_search(text, pattern)
 if returned is None:
@@ -31,7 +44,13 @@ if returned is None:
 else:
     print('\\nSubstring |{}| was found at {} position'.format(pattern, returned))
 print('\\nThe amount of memory, consumed by the string search algorithm {} bytes'
-      .format(returned.__sizeof__()))
+      .format(text.__sizeof__()))
 '''
-time = timeit(setup, number = 1)
-print('\nTime of algorithm execution {:1.3f} second'.format(time))
+while True:
+    time = timeit(stmt, setup, number = 1)
+    print('\nTime of algorithm execution {:f} second'.format(time))
+    ask = input('\nDo you want continue?: ').lower()
+    if ask == 'y':
+        continue
+    else:
+        break
