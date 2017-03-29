@@ -5,6 +5,23 @@ from timeit import timeit
 setup = '''
 from random import choice
 
+while True:
+    try:
+        l_arr = int(input('Please enter length of string: '))
+        if l_arr < 4:
+            print('Please enter correctly number\\n')
+            continue
+        break
+    except ValueError:
+        print('Please enter int number\\n')
+        continue
+text = ''.join(choice('abc') for i in range(l_arr))
+print('Source string:\\n', text)
+pattern = ''.join(choice('abc') for j in range(4))
+print('\\nRandomly selected pattern == {} =='.format(pattern))
+'''
+
+stmt = '''
 def prefix_func(p):
     d = [0] * len(p)
     j = 0
@@ -32,17 +49,19 @@ def kmp_search(s, p):
             return i - j
         return None
 
-text = ''.join(choice('abc') for i in range(108))
-print('Source string:\\n', text)
-pattern = ''.join(choice('abc') for j in range(4))
-print('\\nRandomly selected pattern == {} =='.format(pattern))
 returned = kmp_search(text, pattern)
 if returned is None:
     print('\\nElement not found...')
 else:
     print('\\nPattern |{}| was found at {} position'.format(pattern, returned))
 print('\\nThe amount of memory, consumed by the KMP search algorithm {} bytes'
-      .format(returned.__sizeof__()))
+      .format(text.__sizeof__()))
 '''
-time = timeit(setup, number = 1)
-print('\nTime of algorithm execution {:1.3f} second'.format(time))
+while True:
+    time = timeit(stmt, setup, number = 1)
+    print('\nTime of algorithm execution {:f} second'.format(time))
+    ask = input('\nDo you want continue?: ').lower()
+    if ask == 'y':
+        continue
+    else:
+        break
