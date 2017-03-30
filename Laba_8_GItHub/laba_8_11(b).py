@@ -3,6 +3,18 @@
 (без выполнения лишних сдвигов)"""
 
 import numpy as np
+
+
+def shift_a(a, k):
+    while k != 0:
+        m = a[0]
+        for i in range(len(a) - 1):
+            a[i] = a[i + 1]
+        a[len(a) - 1] = m
+        k -= 1
+    return a
+
+
 flag = True
 while True:
     try:
@@ -12,6 +24,7 @@ while True:
         continue
     if len_a >= 2:
         array = np.zeros(len_a)
+        print(array)
         for i in range(len_a):
             try:
                 array[i] = float(input(f'Input element of array {i + 1:d}: '))
@@ -21,10 +34,12 @@ while True:
                 break
         while flag:
             try:
-                shift = int(input('\nHow many positions need to move the array? '))
+                shift = int(
+                    input('\nHow many positions need to move the array? '))
                 if shift >= 0:
-                    m_array = np.roll(array, -shift)
-                    print('\nShifted array\n', m_array)
+                    if shift > len_a:
+                        shift %= len_a
+                    print('\nShifted array\n', shift_a(array, shift))
                 else:
                     print('Shift can not be negative!\n')
             except ValueError:
