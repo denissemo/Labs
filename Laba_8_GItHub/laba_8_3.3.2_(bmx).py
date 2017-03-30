@@ -22,33 +22,26 @@ print('\\nRandomly selected pattern == {} =='.format(pattern))
 '''
 
 stmt = '''
-def bmx_precompile(p):
-    d = {}
-    len_p = len(p)
-    for i in range(len(p)):
-        d[ord(p[i])] = len_p - i
-    return d
-
-
-def bmx_search(s, p):
-    d = bmx_precompile(p)
-    # k - проход по text
-    # j - проход по pattern
-    # i - место начала прохода по text
-    len_p = i = j = k = len(p)
-    while j > 0 and i <= len(s):
-        if s[k-1] == p[j-1]:
-            k -= 1
-            j -= 1
+def bmx_search(s, p, n, m):
+    d = [m] * (ord(max(max(text), max(pattern))) + 1)
+    for i in range(m - 1):
+        d[ord(p[i])] = m - i - 1
+        p_elem = -1
+        i = 0
+        while n - i >= m and p_elem == -1:
+            j = m - 1
+            while s[i + j] == p[j]:
+                if j == 0:
+                    p_elem = i
+                    break
+                j -= 1
+            i += d[ord(s[i + m - 1])]
+        if p_elem != -1:
+            return p_elem
         else:
-            i += d.get(ord(s[i]), len_p)
-            j = len_p
-            k = i
-    if j <= 0:
-        return k
-    return None
+            return None
 
-returned = bmx_search(text, pattern)
+returned = bmx_search(text, pattern, len(text), len(pattern))
 if returned is None:
     print('\\nElement not found...')
 else:
