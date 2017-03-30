@@ -21,6 +21,7 @@ while True:
         continue
     if n == m:
         array = np.zeros((n, m))
+        print(array)
         flag = False
         for i in range(n):
             for j in range(m):
@@ -35,8 +36,12 @@ while True:
                 break
         if not flag:
             print('\nSource array:\n', array)
-            array = np.rot90(array, 3)
-            print('\nArray turn to 90 degrees:\n', array)
+            s = ''
+            for i in range(0, len(array)):
+                for j in range(-1, -len(array) - 1, -1):
+                    s += str(array[j][i]) + ' '
+                s += '\n'
+            print('\nArray turn to 90 degrees:\n{}'.format(s) )
     else:
         print('Array must be a square!\n')
         continue
