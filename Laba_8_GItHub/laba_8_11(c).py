@@ -57,6 +57,7 @@ while True:
         m = m_1 = m_2
         array_1 = np.zeros((n, m))
         array_2 = np.zeros((n, m))
+        array_3 = np.zeros((n, m))
         print('\nNow you fill the array 1:\n')
         fill_a_1 = fill(array_1)
         print('\nNow you fill the array 2:\n')
@@ -64,8 +65,11 @@ while True:
         if not (fill_a_1 or fill_a_2):
             print('\nSource array 1:\n', array_1)
             print('\nSource array 2:\n', array_2)
-            multiplication = np.dot(array_1, array_2)
-            print('\nMultiplication of arrays:\n', multiplication)
+            for i in range(n):
+                for j in range(n):
+                    for c in range(n):
+                        array_3[i][j] += array_1[i][c] * array_2[c][j]
+            print('\nMultiplication of arrays:\n', array_3)
         else:
             print('An error occurred, try again...\n')
             continue
