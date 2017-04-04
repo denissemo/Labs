@@ -35,8 +35,17 @@ while True:
                 break
         if not flag:
             print('\nSource array:\n', array)
-            array = np.linalg.det(array)
-            print('\nDeterminant of array:\n', array)
+            l = 0
+            mult_diag = 1
+            while l != n - 1:
+                subtr = array[l, l]
+                mult_diag *= subtr
+                for i in range(l + 1, n):
+                    minus = array[i][l] / subtr
+                    for j in range(n):
+                        array[i, j] -= minus * array[l][j]
+                l += 1
+            print('\nDeterminant of array:\n', mult_diag * array[l][l])
     else:
         print('Array must be a square!\n')
         continue
