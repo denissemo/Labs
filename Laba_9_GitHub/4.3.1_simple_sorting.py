@@ -3,6 +3,7 @@
 
 import numpy as np
 
+
 def bubble_sort(n, a):
     flag = True
     for i in range(1, n):
