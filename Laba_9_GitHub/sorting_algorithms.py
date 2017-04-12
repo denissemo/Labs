@@ -30,7 +30,7 @@ def insertion_sort(n, a):
     for i in range(n):
         j = i
         while j > 0 and a[j] < a[j - 1]:
-            a[j], a[j-1] = a[j-1],a[j]
+            a[j], a[j - 1] = a[j - 1], a[j]
             j -= 1
 
 
@@ -48,6 +48,20 @@ def cocktail_sort(n, a):
         if not flag:
             return a
 
+
+def shell_Sort(n, a):
+    d = n // 2
+    while d > 0:
+        for i in range(d, n):
+            tmp = a[i]
+            j = i
+            while j > 0 and tmp < a[j - d]:
+                a[j] = a[j - d]
+                j -= d
+            a[j] = tmp
+        d //= 2
+
+
 while True:
     try:
         l_arr = int(input('Enter length of array: '))
@@ -61,10 +75,11 @@ while True:
     print('\nSource array: ', array, '\n')
     while True:
         print('Which sort method you want to use?\n', '1 - Bubble sort\n', '2'
-              ' - Selection sort\n', '3 - Insertion sort\n', '4 - Cocktail sort\n')
+              ' - Selection sort\n', '3 - Insertion sort\n', '4 - Cocktail sort\n'
+              , '5 - Shell sort\n')
         try:
             sort_m = int(input('Please enter number: '))
-            if sort_m not in range(1, 5):
+            if sort_m not in range(1, 6):
                 print('Please enter correct number!\n')
                 continue
         except ValueError:
@@ -83,6 +98,9 @@ while True:
         print('\nSorted array: ', array)
     elif sort_m == 4:
         cocktail_sort(l_arr, array)
+        print('\nSorted array: ', array)
+    elif sort_m == 5:
+        shell_Sort(l_arr, array)
         print('\nSorted array: ', array)
     ask = input('\nDo you want to try sort array again? [y/n]: ').lower()
     if ask == 'y':
