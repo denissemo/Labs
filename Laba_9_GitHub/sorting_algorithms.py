@@ -1,8 +1,7 @@
 # Семенов Денис КНІТ 16-А
-"""Условие: простые алгоритмы сортировки"""
+"""Условие: алгоритмы сортировки"""
 
 import numpy as np
-
 
 def bubble_sort(n, a):
     flag = True
@@ -35,6 +34,20 @@ def insertion_sort(n, a):
             j -= 1
 
 
+def cocktail_sort(n, a):
+    for k in range(n - 1, 0, -1):
+        flag = False
+        for i in range(k, 0, -1):
+            if a[i] < a[i - 1]:
+                a[i], a[i - 1] = a[i - 1], a[i]
+                flag = True
+        for i in range(k):
+            if a[i] > a[i + 1]:
+                a[i], a[i + 1] = a[i + 1], a[i]
+                flag = True
+        if not flag:
+            return a
+
 while True:
     try:
         l_arr = int(input('Enter length of array: '))
@@ -48,10 +61,10 @@ while True:
     print('\nSource array: ', array, '\n')
     while True:
         print('Which sort method you want to use?\n', '1 - Bubble sort\n', '2'
-              ' - Selection sort\n', '3 - Insertion sort\n')
+              ' - Selection sort\n', '3 - Insertion sort\n', '4 - Cocktail sort\n')
         try:
             sort_m = int(input('Please enter number: '))
-            if sort_m not in range(1, 4):
+            if sort_m not in range(1, 5):
                 print('Please enter correct number!\n')
                 continue
         except ValueError:
@@ -67,6 +80,9 @@ while True:
         print('\nSorted array: ', array)
     elif sort_m == 3:
         insertion_sort(l_arr, array)
+        print('\nSorted array: ', array)
+    elif sort_m == 4:
+        cocktail_sort(l_arr, array)
         print('\nSorted array: ', array)
     ask = input('\nDo you want to try sort array again? [y/n]: ').lower()
     if ask == 'y':
