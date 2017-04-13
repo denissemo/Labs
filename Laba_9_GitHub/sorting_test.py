@@ -1,7 +1,7 @@
 # Семенов Денис КНІТ 16-А
-"""Условие: алгоритмы сортировки"""
+"""программа для теста алгоритмов"""
 
-import numpy as np
+from time import time
 
 def bubble_sort(n, a):
     flag = True
@@ -88,20 +88,14 @@ def heap_sort(n):
 
 
 while True:
-    try:
-        l_arr = int(input('Enter length of array: '))
-        if l_arr < 1:
-            print('Please enter correct number!\n')
-            continue
-    except ValueError:
-        print('Please enter integer number!\n')
-        continue
-    array = np.random.randint(1, 100, l_arr)
-    print('\nSource array: ', array, '\n')
+    file = open('py_alg.txt')
+    a = file.read()
+    array = a.split(',')
+    print('Source array: ', array, '\n')
+    print('Which sort method you want to use?\n', '1 - Bubble sort\n', '2'
+        ' - Selection sort\n', '3 - Insertion sort\n', '4 - Cocktail sort\n'
+        , '5 - Shell sort\n', '6 - Heap sort\n')
     while True:
-        print('Which sort method you want to use?\n', '1 - Bubble sort\n', '2'
-              ' - Selection sort\n', '3 - Insertion sort\n', '4 - Cocktail sort\n'
-              , '5 - Shell sort\n', '6 - Heap sort\n')
         try:
             sort_m = int(input('Please enter number: '))
             if sort_m not in range(1, 7):
@@ -113,23 +107,41 @@ while True:
         else:
             break
     if sort_m == 1:
-        bubble_sort(l_arr, array)
+        s_t = time()
+        bubble_sort(10000, array)
         print('\nSorted array: ', array)
+        p_t = time() - s_t
+        print('\nTime of algorithm execution {:f} second'.format(p_t))
     elif sort_m == 2:
-        selection_sort(l_arr, array)
+        s_t = time()
+        selection_sort(10000, array)
         print('\nSorted array: ', array)
+        p_t = time() - s_t
+        print('\nTime of algorithm execution {:f} second'.format(p_t))
     elif sort_m == 3:
-        insertion_sort(l_arr, array)
+        s_t = time()
+        insertion_sort(10000, array)
         print('\nSorted array: ', array)
+        p_t = time() - s_t
+        print('\nTime of algorithm execution {:f} second'.format(p_t))
     elif sort_m == 4:
-        cocktail_sort(l_arr, array)
+        s_t = time()
+        cocktail_sort(10000, array)
         print('\nSorted array: ', array)
+        p_t = time() - s_t
+        print('\nTime of algorithm execution {:f} second'.format(p_t))
     elif sort_m == 5:
-        shell_Sort(l_arr, array)
+        s_t = time()
+        shell_Sort(10000, array)
         print('\nSorted array: ', array)
+        p_t = time() - s_t
+        print('\nTime of algorithm execution {:f} second'.format(p_t))
     elif sort_m == 6:
-        heap_sort(l_arr)
+        s_t = time()
+        heap_sort(10000)
         print('\nSorted array: ', array)
+        p_t = time() - s_t
+        print('\nTime of algorithm execution {:f} second'.format(p_t))
     ask = input('\nDo you want to try sort array again? [y/n]: ').lower()
     if ask == 'y':
         print()
