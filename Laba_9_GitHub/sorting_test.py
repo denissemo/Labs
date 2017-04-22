@@ -8,7 +8,9 @@ from time import time
 def bubble_sort(n, a):
     """Пузырьковая сортировка.
 
-    Функция принимает два параметра: длину массива(n), и сам массив(а)
+    Параметры: 
+        n -- длина массива
+        a -- массив, который необходимо отсортировать
     """
     flag = True
     c1 = 0
@@ -30,7 +32,9 @@ def bubble_sort(n, a):
 def selection_sort(n, a):
     """Сортировка выбором.
 
-    Функция принимает два параметра: длину массива(n), и сам массив(а)
+    Параметры: 
+        n -- длина массива
+        a -- массив, который необходимо отсортировать
     """
     c1 = 0
     c2 = 0
@@ -48,7 +52,9 @@ def selection_sort(n, a):
 def insertion_sort(n, a):
     """Сортировка вставками.
 
-    Функция принимает два параметра: длину массива(n), и сам массив(а)
+    Параметры: 
+        n -- длина массива
+        a -- массив, который необходимо отсортировать
     """
     c1 = 0
     c2 = 0
@@ -65,7 +71,9 @@ def insertion_sort(n, a):
 def cocktail_sort(n, a):
     """Сортировка перемешиванием.
 
-    Функция принимает два параметра: длину массива(n), и сам массив(а)
+    Параметры: 
+        n -- длина массива
+        a -- массив, который необходимо отсортировать
     """
     c1 = 0
     c2 = 0
@@ -90,7 +98,9 @@ def cocktail_sort(n, a):
 def shell_Sort(n, a):
     """Сортировка Шелла.
 
-    Функция принимает два параметра: длину массива(n), и сам массив(а)
+    Параметры: 
+        n -- длина массива
+        a -- массив, который необходимо отсортировать
     """
     c1 = 0
     c2 = 0
@@ -107,30 +117,63 @@ def shell_Sort(n, a):
     return c1, c2
 
 
-def swap(i, j, a):
-    a[i], a[j] = a[j], a[i]
+def heap_sort(a):
+    """Пирамидальная сортировка.
 
-def heapify(end, i, a):
-    l = 2 * i + 1
-    r = 2 * (i + 1)
-    max = i
-    if l < end and a[i] < a[l]:
-        max = l
-    if r < end and a[max] < a[r]:
-        max = r
-    if max != i:
-        swap(i, max, array)
-        heapify(end, max, array)
+    Параметры:
+        a -- массив, который необходимо отсортировать    
+    """
+    c1 = 0
+    c2 = 0
 
-def heap_sort(n):
-    end = n
-    start = end // 2 - 1
-    for i in range(start, -1, -1):
-        heapify(end, i, array)
-    for i in range(end-1, 0, -1):
-        swap(i, 0, array)
-        heapify(i, 0, array)
+    def swap(parent, child):
+        """Потомок и родительский элементы меняются местами.
 
+        Параметры: 
+            child -- потомок родительского элемента 
+            parent -- родительский элемент
+        """
+        if a[parent] < a[child]:
+            nonlocal c2
+            c2 += 1
+            a[parent], a[child] = a[child], a[parent]
+
+    def max_child(left, right):
+        """Возвращает индекс наибольшего потомка.
+
+        Параметры:
+            left -- левый потомок
+            right -- правый потомок
+        """
+        nonlocal c1
+        c1 += 1
+        if a[left] > a[right]:
+            return left
+        else:
+            return right
+
+    def bin_tree(parent, end):
+        """Создает сортировочное дерево.
+
+        Параметры: 
+            parent -- индекс родительского элемента
+            end -- индекс последнего элемента последовательности
+        """
+        nonlocal c1
+        c1 += 1
+        while 2 * parent + 2 < end:
+            max = max_child(2 * parent + 1, 2 * parent + 2)
+            swap(parent, max)
+            parent = max
+
+    l = len(a)
+    for i in range(l // 2 - 1, -1, -1):  # по очереди перебираются
+        bin_tree(i, l)                   # родительские элементы
+
+    for j in range(l - 1, 0, -1):  # сортирует массив
+        swap(j, 0)
+        bin_tree(0, j)
+    return c1, c2
 
 while True:
     arr_file = open('test_array.txt')
@@ -216,10 +259,16 @@ while True:
         data_file.close()
     elif sort_m == 6:
         s_t = time()
-        heap_sort(10000)
+        returned = heap_sort(array)
         print('\nSorted array: ', array)
+        print('\nNumber of comparisons: {}\nNumber of exchanges: {}'
+              .format(returned[0], returned[1]))
         p_t = time() - s_t
         print('\nTime of algorithm execution {:f} second'.format(p_t))
+        data_file = open('test_data.txt', 'a')
+        data_file.write('\nHeap sort:\n time: {}\n comparisons: {}\n exchanges'
+                        ': {}\n'.format(str(p_t), returned[0], returned[1]))
+        data_file.close()
     ask = input('\nDo you want to try sort array again? [1/0]: ')
     if ask == '1':
         print()
