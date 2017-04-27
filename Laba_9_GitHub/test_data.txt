@@ -1,0 +1,252 @@
+
+Bubble sort:
+ Test array: Random
+ Sorted by Ascending order
+ time: 60.693827629089355
+ comparisons: 49989222
+ exchanges: 24737492
+
+Bubble sort:
+ Test array: Random
+ Sorted by Decrease order
+ time: 66.40363812446594
+ comparisons: 49986354
+ exchanges: 24752422
+
+Bubble sort:
+ Test array: Ascending
+ Sorted by Ascending order
+ time: 0.012398719787597656
+ comparisons: 9999
+ exchanges: 0
+
+Bubble sort:
+ Test array: Ascending
+ Sorted by Decrease order
+ time: 96.06174302101135
+ comparisons: 49987497
+ exchanges: 49489914
+
+Bubble sort:
+ Test array: Descending
+ Sorted by Ascending order
+ time: 98.4224750995636
+ comparisons: 49989747
+ exchanges: 49489914
+
+Bubble sort:
+ Test array: Descending
+ Sorted by Decrease order
+ time: 0.012005090713500977
+ comparisons: 9999
+ exchanges: 0
+
+Selection sort:
+ Test array: Random
+ Sorted by Ascending order
+ time: 30.154799461364746
+ comparisons: 49995000
+ exchanges: 10000
+
+Selection sort:
+ Test array: Random
+ Sorted by Decrease order
+ time: 29.859821796417236
+ comparisons: 49995000
+ exchanges: 10000
+
+Selection sort:
+ Test array: Ascending
+ Sorted by Ascending order
+ time: 29.739070415496826
+ comparisons: 49995000
+ exchanges: 10000
+
+Selection sort:
+ Test array: Ascending
+ Sorted by Decrease order
+ time: 29.778658151626587
+ comparisons: 49995000
+ exchanges: 10000
+
+Selection sort:
+ Test array: Descending
+ Sorted by Ascending order
+ time: 29.573336601257324
+ comparisons: 49995000
+ exchanges: 10000
+
+Selection sort:
+ Test array: Descending
+ Sorted by Decrease order
+ time: 31.429437160491943
+ comparisons: 49995000
+ exchanges: 10000
+
+Insertion sort:
+ Test array: Random
+ Sorted by Ascending order
+ time: 39.662163972854614
+ comparisons: 10000
+ exchanges: 24737492
+
+Insertion sort:
+ Test array: Random
+ Sorted by Decrease order
+ time: 41.81756114959717
+ comparisons: 10000
+ exchanges: 24752422
+
+Insertion sort:
+ Test array: Ascending
+ Sorted by Ascending order
+ time: 0.013509750366210938
+ comparisons: 10000
+ exchanges: 0
+
+Insertion sort:
+ Test array: Ascending
+ Sorted by Decrease order
+ time: 113.72142958641052
+ comparisons: 10000
+ exchanges: 49489914
+
+Insertion sort:
+ Test array: Descending
+ Sorted by Ascending order
+ time: 93.94174695014954
+ comparisons: 10000
+ exchanges: 49489914
+
+Insertion sort:
+ Test array: Descending
+ Sorted by Decrease order
+ time: 0.008002758026123047
+ comparisons: 10000
+ exchanges: 0
+
+Cocktail sort:
+ Test array: Random
+ Sorted by Ascending order
+ time: 51.132954120635986
+ comparisons: 44002194
+ exchanges: 24737492
+
+Cocktail sort:
+ Test array: Random
+ Sorted by Decrease order
+ time: 50.845521688461304
+ comparisons: 43732500
+ exchanges: 24752422
+
+Cocktail sort:
+ Test array: Ascending
+ Sorted by Ascending order
+ time: 0.017007112503051758
+ comparisons: 19998
+ exchanges: 0
+
+Cocktail sort:
+ Test array: Ascending
+ Sorted by Decrease order
+ time: 101.238614320755
+ comparisons: 74744400
+ exchanges: 49489914
+
+Cocktail sort:
+ Test array: Descending
+ Sorted by Ascending order
+ time: 112.33507966995239
+ comparisons: 74744400
+ exchanges: 49489914
+
+Cocktail sort:
+ Test array: Descending
+ Sorted by Decrease order
+ time: 0.018514633178710938
+ comparisons: 19998
+ exchanges: 0
+
+Shell sort:
+ Test array: Random
+ Sorted by Ascending order
+ time: 30.281155586242676
+ comparisons: 19640
+ exchanges: 17014124
+
+Shell sort:
+ Test array: Random
+ Sorted by Decrease order
+ time: 28.767102479934692
+ comparisons: 19640
+ exchanges: 16878037
+
+Shell sort:
+ Test array: Ascending
+ Sorted by Ascending order
+ time: 0.018010854721069336
+ comparisons: 19640
+ exchanges: 0
+
+Shell sort:
+ Test array: Ascending
+ Sorted by Decrease order
+ time: 46.916340351104736
+ comparisons: 19640
+ exchanges: 28742176
+
+Shell sort:
+ Test array: Descending
+ Sorted by Ascending order
+ time: 45.24154496192932
+ comparisons: 19640
+ exchanges: 28742147
+
+Shell sort:
+ Test array: Descending
+ Sorted by Decrease order
+ time: 0.01992940902709961
+ comparisons: 19640
+ exchanges: 0
+
+Heap sort:
+ Test array: Random
+ Sorted by Ascending order
+ time: 0.3787534236907959
+ comparisons: 133335
+ exchanges: 122830
+
+Heap sort:
+ Test array: Random
+ Sorted by Decrease order
+ time: 0.3902623653411865
+ comparisons: 133537
+ exchanges: 123121
+
+Heap sort:
+ Test array: Ascending
+ Sorted by Ascending order
+ time: 0.41327452659606934
+ comparisons: 136892
+ exchanges: 129792
+
+Heap sort:
+ Test array: Ascending
+ Sorted by Decrease order
+ time: 0.38925838470458984
+ comparisons: 133660
+ exchanges: 114943
+
+Heap sort:
+ Test array: Descending
+ Sorted by Ascending order
+ time: 0.36724400520324707
+ comparisons: 133308
+ exchanges: 114704
+
+Heap sort:
+ Test array: Descending
+ Sorted by Decrease order
+ time: 0.3832571506500244
+ comparisons: 134393
+ exchanges: 114168
