@@ -35,7 +35,7 @@ def formula_analyzer_rec(str_f):
     """ Анализирует формулу на соблюдения синтаксиса EBNF. Рекурсивно.
      
     :param str_f: исходня строка (формула)
-    :return: True или False, + описание ошибки (если есть)
+    :return: True или False, + описание ошибки (если есть) 
     """
     if str_f and str_f[0].isdigit() or str_f[0] == '(':
         if str_f[-1] == '.':
