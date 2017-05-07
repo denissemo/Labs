@@ -34,7 +34,7 @@ while True:
                 continue
             break
         except ValueError:
-            print('Number must be integer!')
+            print('Number must be integer!') 
             continue
     while True:
         try:
