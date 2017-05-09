@@ -6,12 +6,12 @@ from time import time
 
 
 def bubble_sort(n, a, c):
-    """Пузырьковая сортировка.
-
-    Параметры: 
-        n -- длина массива
-        a -- массив, который необходимо отсортировать
-        c -- выбор направления сортировки
+    """ Пузырьковая сортировка.
+    
+    :param n: длина массива
+    :param a: массив, который необходимо отсортировать
+    :param c: выбор направления сортировки
+    :return: число сравнений и перестановок элементов
     """
     flag = True
     c1 = 0
@@ -37,12 +37,12 @@ def bubble_sort(n, a, c):
 
 
 def selection_sort(n, a, c):
-    """Сортировка выбором.
-
-    Параметры: 
-        n -- длина массива
-        a -- массив, который необходимо отсортировать
-        c -- выбор направления сортировки
+    """ Сортировка выбором.
+    
+    :param n: длина массива
+    :param a: массив, который необходимо отсортировать
+    :param c: выбор направления сортировки
+    :return: число сравнений и перестановок элементов
     """
     c1 = 0
     c2 = 0
@@ -62,12 +62,12 @@ def selection_sort(n, a, c):
 
 
 def insertion_sort(n, a, c):
-    """Сортировка вставками.
-
-    Параметры: 
-        n -- длина массива
-        a -- массив, который необходимо отсортировать
-        c -- выбор направления сортировки
+    """ Сортировка вставками.
+    
+    :param n: длина массива
+    :param a: массив, который необходимо отсортировать
+    :param c: выбор направления сортировки
+    :return: число сравнений и перестановок элементов
     """
     c1 = 0
     c2 = 0
@@ -88,12 +88,12 @@ def insertion_sort(n, a, c):
 
 
 def cocktail_sort(n, a, c):
-    """Сортировка перемешиванием.
-
-    Параметры: 
-        n -- длина массива
-        a -- массив, который необходимо отсортировать
-        c -- выбор направления сортировки
+    """ Сортировка перемешиванием.
+    
+    :param n: длина массива
+    :param a: массив, который необходимо отсортировать
+    :param c: выбор направления сортировки
+    :return: число сравнений и перестановок элементов
     """
     c1 = 0
     c2 = 0
@@ -128,12 +128,12 @@ def cocktail_sort(n, a, c):
 
 
 def shell_Sort(n, a, c):
-    """Сортировка Шелла.
-
-    Параметры: 
-        n -- длина массива
-        a -- массив, который необходимо отсортировать
-        c -- выбор направления сортировки
+    """ Сортировка Шелла.
+    
+    :param n: длина массива
+    :param a: массив, который необходимо отсортировать
+    :param c: выбор направления сортировки
+    :return: число сравнений и перестановок элементов
     """
     c1 = 0
     c2 = 0
@@ -157,21 +157,20 @@ def shell_Sort(n, a, c):
 
 
 def heap_sort(a, c):
-    """Пирамидальная сортировка.
+    """ Пирамидальная сортировка.
 
-    Параметры:
-        a -- массив, который необходимо отсортировать
-        c -- выбор направления сортировки
+    :param a: массив, который необходимо отсортировать
+    :param c: выбор направления сортировки
+    :return: число сравнений и перестановок элементов
     """
     c1 = 0
     c2 = 0
 
     def swap(parent, child):
-        """Потомок и родительский элементы меняются местами.
-
-        Параметры: 
-            child -- потомок родительского элемента 
-            parent -- родительский элемент
+        """ Потомок и родительский элементы меняются местами.
+        
+        :param parent: родительский элемент
+        :param child: потомок родительского элемента
         """
         nonlocal c2
         if c == 1:
@@ -184,11 +183,11 @@ def heap_sort(a, c):
                 a[parent], a[child] = a[child], a[parent]
 
     def max_child(left, right):
-        """Возвращает индекс наибольшего потомка.
-
-        Параметры:
-            left -- левый потомок
-            right -- правый потомок
+        """ Возвращает индекс наибольшего потомка.
+        
+        :param left: левый потомок
+        :param right: правый потомок
+        :return: индекс наибольшего потомка
         """
         nonlocal c1
         c1 += 1
@@ -204,11 +203,10 @@ def heap_sort(a, c):
                 return left
 
     def bin_tree(parent, end):
-        """Создает сортировочное дерево.
-
-        Параметры: 
-            parent -- индекс родительского элемента
-            end -- индекс последнего элемента последовательности
+        """ Создает сортировочное дерево.
+        
+        :param parent: индекс родительского элемента
+        :param end: индекс последнего элемента последовательности
         """
         nonlocal c1
         c1 += 1
@@ -231,8 +229,8 @@ while True:
         try:
             test_arr = int(input('What test array do you want to use?\n 1 - Pse'
             'udorandom\n 2 - Sorted in ascending order\n 3 - Sorted in descendi'
-            'ng order\n→ '))
-            if test_arr in range(1, 4):
+            'ng order\n 4 - Manual\n→ '))
+            if test_arr in range(1, 5):
                 what_arr = ''
                 if test_arr == 1:
                     what_arr = 'Random'
@@ -243,6 +241,35 @@ while True:
                 elif test_arr == 3:
                     what_arr = 'Descending'
                     arr_file = open('test_array_3.txt')  # массив упорядоченный по убыванию
+                elif test_arr == 4:
+                    what_arr = 'Manual'
+                    while True:
+                        try:
+                            l_arr = int(input('Enter length of array: '))
+                            if l_arr < 1:
+                                print('Please enter correct number!\n')
+                                continue
+                            break
+                        except ValueError:
+                            print('Please enter integer number!\n')
+                            continue
+                    flag = True
+                    while flag:
+                        file = open('test_array_4.txt', 'w')
+                        for i in range(l_arr):
+                            inp = input('Input element of array {} → '
+                                        .format(i + 1))
+                            if inp.isdigit():
+                                file.write('{},'.format(inp))
+                                flag = False
+                            else:
+                                print('Please enter integer number!\n')
+                                flag = True
+                                break
+                        if not flag:
+                            break
+                    file.close()
+                    arr_file = open('test_array_4.txt')  # заданый пользователем массив
             else:
                 print('Please enter correct number!\n')
                 continue
@@ -252,7 +279,11 @@ while True:
         else:
             break
     a = arr_file.read()
-    array = np.zeros(10000, dtype = int)  # Тестовый массив
+    if a.endswith(','):
+        a = a[0: -1]
+        array = np.zeros(l_arr, dtype = int)
+    else:
+        array = np.zeros(10000, dtype = int)  # Тестовый массив
     arr = a.split(',')
     for i in range(len(arr)):
         array[i] = arr[i]
