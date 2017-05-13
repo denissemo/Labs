@@ -6,26 +6,38 @@
 
 import numpy as np
 
-def number_decompose_rec(n):
+def number_decompose_rec(n, i):
+    """ Высчитывает кол-во представлений.
+    
+    :param n: заданное натуральное число
+    :param i: кол-во слагаемых
+    :return: кол-во представлений
+    """
+    if n == 0 and i == 0:
+        return 1
+    if n <= 0 or i <= 0:
+        return 0
+    return number_decompose_rec(n - i, i) + number_decompose_rec(n - 1, i - 1)
+
+def number_decompose_rec_stack(n):
     """ Функция подсчета количества различных представлений заданого числа.
      Рекурсивно
 
     :param n: заданное натуральное число
     :return: количество различных представлений числа n
     """
-    c = 0
-    a = n - 1
-    while a > n // 2:
-        b = n - a
-        c = c + 1 + number_decompose_rec(b)
-        a -= 1
-    return c
+    s = []
+    if n == 0 or n == 1:
+        return 0
+    for i in range(1, n):
+        s.append(number_decompose_rec(n, i))
+    return max(s)
 
 
 def number_decompose_iter(n):
     """ Функция подсчета количества различных представлений заданого числа.
      Итерационно
-    
+
     :param n: заданное натуральное число 
     :return: количество различных представлений числа n 
     """
@@ -94,7 +106,7 @@ while True:
             continue
     if rec_or_iter == 1:
         print('\nRecursion version ↓\nThe number of different representations '
-              'of {} number → {}'.format(num, number_decompose_rec(num)))
+              'of {} number → {}'.format(num, number_decompose_rec_stack(num)))
     else:
         print('\nIteration version ↓\nThe number of different representations '
               'of {} number → {}'.format(num, number_decompose_iter(num)))
